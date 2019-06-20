@@ -5,8 +5,77 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ListOfEmployees"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="438.655" Width="800">
+	<Grid Margin="0,0,0,32">
+		<Button Content="Создать отдел" 
+				HorizontalAlignment="Left" 
+				Margin="649,52,0,0" 
+				VerticalAlignment="Top" 
+				Width="130" 
+				Click="Button_Click"/>
+		<Button x:Name="addEmployee" Content="Добавить сотрудника" 
+				HorizontalAlignment="Left" 
+				Margin="649,92,0,0" 
+				VerticalAlignment="Top" Width="130" 
+				Click="Button_Click_1"/>
+		<ComboBox x:Name="cmbEmployees" HorizontalAlignment="Left" 
+				  Margin="246,50,0,0" 
+				  VerticalAlignment="Top" 
+				  Width="120"
+				  >
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Grid>
+						<TextBlock Text="{Binding _secondtName}"/>
+					</Grid>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<ListBox x:Name="lb" 
+				 HorizontalAlignment="Left" 
+				 Height="340" 
+				 Margin="25,25,0,0" 
+				 VerticalAlignment="Top" 
+				 Width="200">
+		<ListBox.ItemTemplate>
+				<DataTemplate>
+					<!--помещаем отображаемые элементы в датаконтекст грида-->
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="20" />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="100" />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
+						<TextBlock Text="{Binding _firstName}" />
+						<TextBlock Text="{Binding _secondName}" Grid.Column="1"/>
+						<TextBlock Text="{Binding _salary}" Grid.Row="1" Grid.Column="1" />
+						<TextBlock Text="{Binding _age}" Grid.Row="1" />
+					</Grid>
+					
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+		</ListBox>
+		<ComboBox x:Name="cmbDepartments" HorizontalAlignment="Left" 
+				  Margin="386,52,0,0" 
+				  VerticalAlignment="Top" 
+				  Width="120" RenderTransformOrigin="1.404,0.912"/>
+		<Label Content="Сотрудники" 
+			   HorizontalAlignment="Left" 
+			   Margin="246,19,0,0" 
+			   VerticalAlignment="Top" RenderTransformOrigin="2.868,0.461"/>
+		<Label Content="Отдел" 
+			   HorizontalAlignment="Left" 
+			   Margin="386,19,0,0" 
+			   VerticalAlignment="Top" 
+			   RenderTransformOrigin="1.026,-0.218"/>
+		<TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="23" Margin="246,229,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Width="120" />
+		<TextBox x:Name="textBoxSecondName" HorizontalAlignment="Left" Height="23" Margin="246,257,0,0" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="textBoxAge" HorizontalAlignment="Left" Height="23" Margin="246,285,0,0" TextWrapping="Wrap" Text="Возраст" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="textBoxSalary" HorizontalAlignment="Left" Height="23" Margin="246,313,0,0" TextWrapping="Wrap" Text="Зарплата" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="textBoxDepartment" HorizontalAlignment="Left" Height="23" Margin="246,341,0,0" TextWrapping="Wrap" Text="Отдел" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="textBoxDepName" HorizontalAlignment="Left" Height="23" Margin="386,229,0,0" TextWrapping="Wrap" Text="Название отдела" VerticalAlignment="Top" Width="120"/>
+	</Grid>
 </Window>
