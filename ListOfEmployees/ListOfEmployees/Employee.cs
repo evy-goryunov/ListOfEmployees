@@ -23,6 +23,12 @@ namespace ListOfEmployees
 			this._salary = salary;
 		}
 
-		
+		public static ObservableCollection<Employee> dbEmployee { get; set; } = new ObservableCollection<Employee>();
+
+		public override string ToString()
+		{
+			return _firstName + " " + _secondName;
+		}
+
 	}
 }

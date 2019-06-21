@@ -34,31 +34,59 @@ namespace ListOfEmployees
 	{
 		Department dep;
 		Employee emp;
-		DataBase db;
+		EmployeeWindow winEmployee;
+
 		public MainWindow()
 		{
 			InitializeComponent();
-
-			
-			
 		}
-		//отдел
+		//добавить отдел TODO переопредели ToString у Department добавить отображение в ListBox и ComboBox
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			dep = new Department(textBoxDepName.Text);
-			db = new DataBase(dep);
+			DataBase.dbDepartment.Add(dep);
+			cmbDepartments.ItemsSource = DataBase.dbDepartment;
 		}
-		//добавить сотрудника
+		//добавить сотрудника TODO добавить отображение в ListBox через ToString
 		private void Button_Click_1(object sender, RoutedEventArgs e)
 		{
+			//проверяем нет ли пустых полей
+			if (textBoxName.Text != "" && textBoxSecondName.Text != "" && textBoxAge.Text != "" && textBoxSalary.Text != "")
+			{
+				emp = new Employee(textBoxName.Text.ToString(), textBoxSecondName.Text, textBoxAge.Text, textBoxSalary.Text);
+				DataBase.dbEmployee.Add(emp);
+				lb.ItemsSource = DataBase.dbEmployee;
+				cmbEmployees.ItemsSource = DataBase.dbEmployee;
+				this.Title = DataBase.dbEmployee.Count.ToString();
+			}
+			else { MessageBox.Show("Заполните все поля."); }
 			
-			emp = new Employee(textBoxName.Text, textBoxSecondName.Text, textBoxAge.Text, textBoxSalary.Text);
-			db = new DataBase(emp);
-			lb.ItemsSource = db.dbEmployee;
-			cmbEmployees.ItemsSource = db.dbEmployee;
 		}
-		
-		
-
+		//кнопка Выход в контекстном меню
+		private void AppExit_Click(object sender, RoutedEventArgs e)
+		{
+			Application.Current.Shutdown();
+		}
+		//открываем окно редактирования
+		private void Lb_GotMouseCapture(object sender, MouseEventArgs e)
+		{
+			if (winEmployee != null)
+			{
+				try
+				{
+					winEmployee.Show();
+				}
+				catch
+				{
+					winEmployee = new EmployeeWindow();
+					winEmployee.Show();
+				}
+			}
+			else
+			{
+				winEmployee = new EmployeeWindow();
+				winEmployee.Show();
+			}
+		}
 	}
 }
