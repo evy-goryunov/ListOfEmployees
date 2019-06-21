@@ -5,39 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ListOfEmployees"
         mc:Ignorable="d"
-        Title="MainWindow" Height="438.655" Width="800">
+        Title="MainWindow" Width="810" Height="450" ResizeMode="NoResize">
 	<Grid Margin="0,0,0,32">
 		<Button Content="Создать отдел" 
 				HorizontalAlignment="Left" 
-				Margin="649,52,0,0" 
+				Margin="650,52,0,0" 
 				VerticalAlignment="Top" 
 				Width="130" 
 				Click="Button_Click"/>
 		<Button x:Name="addEmployee" Content="Добавить сотрудника" 
 				HorizontalAlignment="Left" 
-				Margin="649,92,0,0" 
+				Margin="650,92,0,0" 
 				VerticalAlignment="Top" Width="130" 
 				Click="Button_Click_1"/>
-		<ComboBox x:Name="cmbEmployees" HorizontalAlignment="Left" 
-				  Margin="246,50,0,0" 
+		<ComboBox x:Name="cmbEmployees" 
+				  HorizontalAlignment="Left" 
+				  Margin="290,63,0,0" 
 				  VerticalAlignment="Top" 
 				  Width="120"
-				  >
-			<ComboBox.ItemTemplate>
+				  />
+		<!--<ComboBox.ItemTemplate>
 				<DataTemplate>
 					<Grid>
-						<TextBlock Text="{Binding _secondtName}"/>
+						<TextBlock Text="{Binding _secondName}"/>
 					</Grid>
 				</DataTemplate>
 			</ComboBox.ItemTemplate>
-		</ComboBox>
+		</ComboBox>-->
 		<ListBox x:Name="lb" 
 				 HorizontalAlignment="Left" 
 				 Height="340" 
-				 Margin="25,25,0,0" 
+				 Margin="25,35,0,0" 
 				 VerticalAlignment="Top" 
-				 Width="200">
-		<ListBox.ItemTemplate>
+				 Width="200" GotMouseCapture="Lb_GotMouseCapture" >
+
+			<ListBox.ItemTemplate>
 				<DataTemplate>
 					<!--помещаем отображаемые элементы в датаконтекст грида-->
 					<Grid>
@@ -54,28 +56,57 @@
 						<TextBlock Text="{Binding _salary}" Grid.Row="1" Grid.Column="1" />
 						<TextBlock Text="{Binding _age}" Grid.Row="1" />
 					</Grid>
-					
+
 				</DataTemplate>
 			</ListBox.ItemTemplate>
 		</ListBox>
-		<ComboBox x:Name="cmbDepartments" HorizontalAlignment="Left" 
-				  Margin="386,52,0,0" 
+		<ComboBox x:Name="cmbDepartments" 
+				  HorizontalAlignment="Left" 
+				  Margin="424,63,0,0" 
 				  VerticalAlignment="Top" 
-				  Width="120" RenderTransformOrigin="1.404,0.912"/>
+				  Width="120"
+				   >
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Grid>
+						<TextBlock Text="{Binding _departmentName}"/>
+					</Grid>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
 		<Label Content="Сотрудники" 
 			   HorizontalAlignment="Left" 
-			   Margin="246,19,0,0" 
+			   Margin="291,33,0,0" 
 			   VerticalAlignment="Top" RenderTransformOrigin="2.868,0.461"/>
 		<Label Content="Отдел" 
 			   HorizontalAlignment="Left" 
-			   Margin="386,19,0,0" 
+			   Margin="425,33,0,0" 
 			   VerticalAlignment="Top" 
 			   RenderTransformOrigin="1.026,-0.218"/>
-		<TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="23" Margin="246,229,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Width="120" />
-		<TextBox x:Name="textBoxSecondName" HorizontalAlignment="Left" Height="23" Margin="246,257,0,0" TextWrapping="Wrap" Text="Фамилия" VerticalAlignment="Top" Width="120"/>
-		<TextBox x:Name="textBoxAge" HorizontalAlignment="Left" Height="23" Margin="246,285,0,0" TextWrapping="Wrap" Text="Возраст" VerticalAlignment="Top" Width="120"/>
-		<TextBox x:Name="textBoxSalary" HorizontalAlignment="Left" Height="23" Margin="246,313,0,0" TextWrapping="Wrap" Text="Зарплата" VerticalAlignment="Top" Width="120"/>
-		<TextBox x:Name="textBoxDepartment" HorizontalAlignment="Left" Height="23" Margin="246,341,0,0" TextWrapping="Wrap" Text="Отдел" VerticalAlignment="Top" Width="120"/>
-		<TextBox x:Name="textBoxDepName" HorizontalAlignment="Left" Height="23" Margin="386,229,0,0" TextWrapping="Wrap" Text="Название отдела" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="23" Margin="291,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" />
+		<TextBox x:Name="textBoxSecondName" HorizontalAlignment="Left" Height="23" Margin="291,195,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="textBoxAge" HorizontalAlignment="Left" Height="23" Margin="290,246,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="textBoxSalary" HorizontalAlignment="Left" Height="23" Margin="290,298,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="textBoxDepartment" HorizontalAlignment="Left" Height="23" Margin="291,349,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="textBoxDepName" HorizontalAlignment="Left" Height="23" Margin="424,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+		<StackPanel VerticalAlignment="Top">
+			<Menu Width="Auto" Height="20">
+				<MenuItem Header="Файл">
+					<MenuItem x:Name="AppExit" Header="Выход" HorizontalAlignment="Left" Width="140" Click="AppExit_Click" />
+				</MenuItem>
+				<MenuItem Header="Вид">
+					<MenuItem x:Name="Options" Header="Настройки" HorizontalAlignment="Left" Width="150"/>
+				</MenuItem>
+				<MenuItem Header="Помощь">
+					<MenuItem x:Name="About" Header="О программе" HorizontalAlignment="Left" Width="160"/>
+				</MenuItem>
+			</Menu>
+		</StackPanel>
+		<Label Content="Имя" HorizontalAlignment="Left" Margin="290,119,0,0" VerticalAlignment="Top"/>
+		<Label Content="Фамилия" HorizontalAlignment="Left" Margin="291,169,0,0" VerticalAlignment="Top"/>
+		<Label Content="Возраст" HorizontalAlignment="Left" Margin="290,220,0,0" VerticalAlignment="Top"/>
+		<Label Content="Зарплата" HorizontalAlignment="Left" Margin="291,272,0,0" VerticalAlignment="Top"/>
+		<Label Content="Отдел" HorizontalAlignment="Left" Margin="291,323,0,0" VerticalAlignment="Top"/>
+		<Label Content="Название отдела" HorizontalAlignment="Left" Margin="425,119,0,0" VerticalAlignment="Top"/>
 	</Grid>
 </Window>
