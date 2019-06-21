@@ -15,5 +15,9 @@ namespace ListOfEmployees
 		{
 			this._departmentName = departmentName;
 		}
+		public override string ToString()
+		{
+			return "Отдел:" + " " +_departmentName;
+		}
 	}
 }

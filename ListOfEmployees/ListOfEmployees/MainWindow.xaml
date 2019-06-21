@@ -16,7 +16,8 @@
 		<Button x:Name="addEmployee" Content="Добавить сотрудника" 
 				HorizontalAlignment="Left" 
 				Margin="650,92,0,0" 
-				VerticalAlignment="Top" Width="130" 
+				VerticalAlignment="Top" 
+				Width="130" 
 				Click="Button_Click_1"/>
 		<ComboBox x:Name="cmbEmployees" 
 				  HorizontalAlignment="Left" 
@@ -37,11 +38,10 @@
 				 Height="340" 
 				 Margin="25,35,0,0" 
 				 VerticalAlignment="Top" 
-				 Width="200" GotMouseCapture="Lb_GotMouseCapture" >
-
-			<ListBox.ItemTemplate>
+				 Width="200" GotMouseCapture="Lb_GotMouseCapture" />
+		<!--<ListBox.ItemTemplate>
 				<DataTemplate>
-					<!--помещаем отображаемые элементы в датаконтекст грида-->
+					помещаем отображаемые элементы в датаконтекст грида
 					<Grid>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="20" />
@@ -59,7 +59,7 @@
 
 				</DataTemplate>
 			</ListBox.ItemTemplate>
-		</ListBox>
+		</ListBox>-->
 		<ComboBox x:Name="cmbDepartments" 
 				  HorizontalAlignment="Left" 
 				  Margin="424,63,0,0" 
@@ -87,7 +87,6 @@
 		<TextBox x:Name="textBoxSecondName" HorizontalAlignment="Left" Height="23" Margin="291,195,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 		<TextBox x:Name="textBoxAge" HorizontalAlignment="Left" Height="23" Margin="290,246,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 		<TextBox x:Name="textBoxSalary" HorizontalAlignment="Left" Height="23" Margin="290,298,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-		<TextBox x:Name="textBoxDepartment" HorizontalAlignment="Left" Height="23" Margin="291,349,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 		<TextBox x:Name="textBoxDepName" HorizontalAlignment="Left" Height="23" Margin="424,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 		<StackPanel VerticalAlignment="Top">
 			<Menu Width="Auto" Height="20">
@@ -98,7 +97,7 @@
 					<MenuItem x:Name="Options" Header="Настройки" HorizontalAlignment="Left" Width="150"/>
 				</MenuItem>
 				<MenuItem Header="Помощь">
-					<MenuItem x:Name="About" Header="О программе" HorizontalAlignment="Left" Width="160"/>
+					<MenuItem x:Name="About" Header="О программе" HorizontalAlignment="Left" Width="160" Click="About_Click"/>
 				</MenuItem>
 			</Menu>
 		</StackPanel>
@@ -106,7 +105,24 @@
 		<Label Content="Фамилия" HorizontalAlignment="Left" Margin="291,169,0,0" VerticalAlignment="Top"/>
 		<Label Content="Возраст" HorizontalAlignment="Left" Margin="290,220,0,0" VerticalAlignment="Top"/>
 		<Label Content="Зарплата" HorizontalAlignment="Left" Margin="291,272,0,0" VerticalAlignment="Top"/>
-		<Label Content="Отдел" HorizontalAlignment="Left" Margin="291,323,0,0" VerticalAlignment="Top"/>
 		<Label Content="Название отдела" HorizontalAlignment="Left" Margin="425,119,0,0" VerticalAlignment="Top"/>
+		<Separator HorizontalAlignment="Left" Height="100" Margin="429,167,-13,0" VerticalAlignment="Top" Width="388" RenderTransformOrigin="0.5,0.5">
+			<Separator.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform Angle="90
+									 "/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Separator.RenderTransform>
+		</Separator>
+		<Button x:Name="refreshBtn" 
+				Content="Обновить списки" 
+				HorizontalAlignment="Left" 
+				Margin="650,132,0,0" 
+				VerticalAlignment="Top" 
+				Width="130" 
+				Click="RefreshBtn_Click"/>
 	</Grid>
 </Window>

@@ -14,14 +14,14 @@ using System.Windows.Shapes;
 
 namespace ListOfEmployees
 {
-    /// <summary>
-    /// Логика взаимодействия для Window2.xaml
-    /// </summary>
-    public partial class Window2 : Window
-    {
-        public Window2()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Логика взаимодействия для AboutWindow.xaml
+	/// </summary>
+	public partial class AboutWindow : Window
+	{
+		public AboutWindow()
+		{
+			InitializeComponent();
+		}
+	}
 }

@@ -35,28 +35,35 @@ namespace ListOfEmployees
 		Department dep;
 		Employee emp;
 		EmployeeWindow winEmployee;
+		AboutWindow abWin;
 
 		public MainWindow()
 		{
 			InitializeComponent();
 		}
-		//добавить отдел TODO переопредели ToString у Department добавить отображение в ListBox и ComboBox
+		//добавить отдел
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			dep = new Department(textBoxDepName.Text);
-			DataBase.dbDepartment.Add(dep);
-			cmbDepartments.ItemsSource = DataBase.dbDepartment;
+			//проверяем нет ли пустых полей
+			if (textBoxDepName.Text != "")
+			{
+				dep = new Department(textBoxDepName.Text);
+				DataBase.dbDepartment.Add(dep);
+				cmbDepartments.ItemsSource = DataBase.dbDepartment;
+			}
+			else { MessageBox.Show("Заполните все поля."); }
 		}
-		//добавить сотрудника TODO добавить отображение в ListBox через ToString
+		//добавить сотрудника
 		private void Button_Click_1(object sender, RoutedEventArgs e)
 		{
 			//проверяем нет ли пустых полей
 			if (textBoxName.Text != "" && textBoxSecondName.Text != "" && textBoxAge.Text != "" && textBoxSalary.Text != "")
 			{
-				emp = new Employee(textBoxName.Text.ToString(), textBoxSecondName.Text, textBoxAge.Text, textBoxSalary.Text);
+				emp = new Employee(textBoxName.Text.ToString(), textBoxSecondName.Text, textBoxAge.Text, textBoxSalary.Text, textBoxDepName.Text);
 				DataBase.dbEmployee.Add(emp);
 				lb.ItemsSource = DataBase.dbEmployee;
 				cmbEmployees.ItemsSource = DataBase.dbEmployee;
+				cmbDepartments.ItemsSource = DataBase.dbDepartment;
 				this.Title = DataBase.dbEmployee.Count.ToString();
 			}
 			else { MessageBox.Show("Заполните все поля."); }
@@ -66,6 +73,27 @@ namespace ListOfEmployees
 		private void AppExit_Click(object sender, RoutedEventArgs e)
 		{
 			Application.Current.Shutdown();
+		}
+		//кнопка О программе в контекстном меню
+		private void About_Click(object sender, RoutedEventArgs e)
+		{
+			if (abWin != null)
+			{
+				try
+				{
+					abWin.Show();
+				}
+				catch
+				{
+					abWin = new AboutWindow();
+					abWin.Show();
+				}
+			}
+			else
+			{
+				abWin = new AboutWindow();
+				abWin.Show();
+			}
 		}
 		//открываем окно редактирования
 		private void Lb_GotMouseCapture(object sender, MouseEventArgs e)
@@ -87,6 +115,11 @@ namespace ListOfEmployees
 				winEmployee = new EmployeeWindow();
 				winEmployee.Show();
 			}
+		}
+
+		private void RefreshBtn_Click(object sender, RoutedEventArgs e)
+		{
+			lb.Items.Refresh();
 		}
 	}
 }

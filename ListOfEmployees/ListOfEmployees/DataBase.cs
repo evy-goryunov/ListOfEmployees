@@ -17,5 +17,10 @@ namespace ListOfEmployees
 		public static ObservableCollection<Employee> dbEmployee { get; set; } = new ObservableCollection<Employee>();
 		public static ObservableCollection<Department> dbDepartment { get; set; } = new ObservableCollection<Department>();
 
+		public static void SetAge(string a, int i)
+		{
+			dbEmployee[i].SetAge(a);
+		}
+
 	}
 }
