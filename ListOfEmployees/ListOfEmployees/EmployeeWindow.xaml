@@ -5,30 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ListOfEmployees"
         mc:Ignorable="d"
-        Title="EmployeeWindow" Height="450" Width="800">
+        Title="EmployeeWindow" Height="350" Width="350" ResizeMode="NoResize">
 	<Grid>
-		<TextBox x:Name="tx1" 
+		<TextBox x:Name="txChangeID" 
 				 HorizontalAlignment="Left" 
 				 Height="23" 
-				 Margin="28,27,0,0" 
+				 Margin="28,30,0,0" 
 				 TextWrapping="Wrap" 
-				 Text="TextBox" 
+				 Text="" 
 				 VerticalAlignment="Top" 
 				 Width="120"/>
-		<TextBox x:Name="tx2" 
+		<TextBox x:Name="txChangeSalary" 
 				 HorizontalAlignment="Left" 
 				 Height="23" 
-				 Margin="28,66,0,0" 
+				 Margin="28,80,0,0" 
 				 TextWrapping="Wrap" 
-				 Text="TextBox" 
+				 Text="" 
 				 VerticalAlignment="Top" 
 				 Width="120"/>
 		<Button x:Name="btn1" 
 				Content="Изменить" 
 				HorizontalAlignment="Left" 
-				Margin="210,27,0,0" 
+				Margin="158,80,0,0" 
 				VerticalAlignment="Top" 
-				Width="75" 
-				Click="Btn1_Click"/>
+				Width="76" 
+				Click="Btn1_Click" Height="23"/>
+		<TextBox x:Name="txChangeDepartment" 
+			HorizontalAlignment="Left" 
+			Height="23" Margin="28,130,0,0" 
+			TextWrapping="Wrap" 
+			Text="" 
+			VerticalAlignment="Top" 
+			Width="120"/>
+		<Label Content="ID" HorizontalAlignment="Left" Margin="28,4,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.758,1.103"/>
+		<Label Content="Зарплата" HorizontalAlignment="Left" Margin="28,54,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.526,1.538"/>
+		<Label Content="Отдел" HorizontalAlignment="Left" Margin="28,104,0,0" VerticalAlignment="Top"/>
+		<Button Content="Изменить" 
+				HorizontalAlignment="Left" 
+				Margin="158,130,0,0" 
+				VerticalAlignment="Top" 
+				Width="76" 
+				Height="23" Click="Button_Click"/>
 	</Grid>
 </Window>

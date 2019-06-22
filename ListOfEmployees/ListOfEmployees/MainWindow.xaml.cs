@@ -51,22 +51,24 @@ namespace ListOfEmployees
 				DataBase.dbDepartment.Add(dep);
 				cmbDepartments.ItemsSource = DataBase.dbDepartment;
 			}
-			else { MessageBox.Show("Заполните все поля."); }
+			else { MessageBox.Show("Введите название отдела."); }
 		}
 		//добавить сотрудника
 		private void Button_Click_1(object sender, RoutedEventArgs e)
 		{
-			//проверяем нет ли пустых полей
-			if (textBoxName.Text != "" && textBoxSecondName.Text != "" && textBoxAge.Text != "" && textBoxSalary.Text != "")
+			//проверяем нет ли пустых полей или букв в возрасте и зарплате
+			if (textBoxName.Text != "" && textBoxSecondName.Text != "" && textBoxAge.Text != "" && textBoxSalary.Text != ""
+				&& textBoxAge.Text.All(char.IsDigit) != false && textBoxSalary.Text.All(char.IsDigit) != false)
 			{
-				emp = new Employee(textBoxName.Text.ToString(), textBoxSecondName.Text, textBoxAge.Text, textBoxSalary.Text, textBoxDepName.Text);
+				emp = new Employee(textBoxName.Text.ToString(), textBoxSecondName.Text, Int32.Parse(textBoxAge.Text), Int32.Parse(textBoxSalary.Text), textBoxDepName.Text);
 				DataBase.dbEmployee.Add(emp);
 				lb.ItemsSource = DataBase.dbEmployee;
 				cmbEmployees.ItemsSource = DataBase.dbEmployee;
 				cmbDepartments.ItemsSource = DataBase.dbDepartment;
-				this.Title = DataBase.dbEmployee.Count.ToString();
+				//this.Title = DataBase.dbEmployee.Count.ToString();
+				DataBase.SetId(DataBase.dbEmployee.IndexOf(emp));
 			}
-			else { MessageBox.Show("Заполните все поля."); }
+			else { MessageBox.Show("Заполнены не все поля или неверный формат ввода."); }
 			
 		}
 		//кнопка Выход в контекстном меню
@@ -95,7 +97,7 @@ namespace ListOfEmployees
 				abWin.Show();
 			}
 		}
-		//открываем окно редактирования
+		//вызов окна редактирования
 		private void Lb_GotMouseCapture(object sender, MouseEventArgs e)
 		{
 			if (winEmployee != null)
@@ -116,10 +118,26 @@ namespace ListOfEmployees
 				winEmployee.Show();
 			}
 		}
-
+		//вызов окна редактирования
 		private void RefreshBtn_Click(object sender, RoutedEventArgs e)
 		{
-			lb.Items.Refresh();
+			if (winEmployee != null)
+			{
+				try
+				{
+					winEmployee.Show();
+				}
+				catch
+				{
+					winEmployee = new EmployeeWindow();
+					winEmployee.Show();
+				}
+			}
+			else
+			{
+				winEmployee = new EmployeeWindow();
+				winEmployee.Show();
+			}
 		}
 	}
 }

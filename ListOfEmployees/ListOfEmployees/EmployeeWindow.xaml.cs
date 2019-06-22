@@ -23,13 +23,26 @@ namespace ListOfEmployees
 		{
 			InitializeComponent();
 			this.Title = "Окно редактирования сотрудника";
-			tx1.Text = DataBase.dbEmployee.ToString();
-			
 		}
-
+		// редактирование зарплаты
 		private void Btn1_Click(object sender, RoutedEventArgs e)
 		{
-			DataBase.SetAge(tx2.Text, 0);
+			if (txChangeSalary.Text != "" && txChangeID.Text != "" && txChangeSalary.Text.All(char.IsDigit) != false && txChangeID.Text.All(char.IsDigit) != false)
+			{
+				DataBase.SetSal(Int32.Parse(txChangeSalary.Text), Int32.Parse(txChangeID.Text));
+				((MainWindow)Application.Current.MainWindow).lb.Items.Refresh();
+			}
+			else { MessageBox.Show("Заполнены не все поля или неверный формат ввода."); }
+		}
+		// редактирование отдела
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			if (txChangeDepartment.Text != "" && txChangeID.Text != "" && txChangeID.Text.All(char.IsDigit) != false)
+			{
+				DataBase.SetDep(txChangeDepartment.Text, Int32.Parse(txChangeID.Text));
+				((MainWindow)Application.Current.MainWindow).lb.Items.Refresh();
+			}
+			else { MessageBox.Show("Заполнены не все поля или неверный формат ввода."); }
 		}
 	}
 }

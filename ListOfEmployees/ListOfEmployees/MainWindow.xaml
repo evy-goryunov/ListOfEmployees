@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ListOfEmployees"
         mc:Ignorable="d"
-        Title="MainWindow" Width="810" Height="450" ResizeMode="NoResize">
+        Title="Сотрудники и отделы" Width="825" Height="450" ResizeMode="NoResize">
 	<Grid Margin="0,0,0,32">
 		<Button Content="Создать отдел" 
 				HorizontalAlignment="Left" 
 				Margin="650,52,0,0" 
 				VerticalAlignment="Top" 
-				Width="130" 
+				Width="140" 
 				Click="Button_Click"/>
 		<Button x:Name="addEmployee" Content="Добавить сотрудника" 
 				HorizontalAlignment="Left" 
 				Margin="650,92,0,0" 
 				VerticalAlignment="Top" 
-				Width="130" 
+				Width="140" 
 				Click="Button_Click_1"/>
 		<ComboBox x:Name="cmbEmployees" 
 				  HorizontalAlignment="Left" 
@@ -38,7 +38,8 @@
 				 Height="340" 
 				 Margin="25,35,0,0" 
 				 VerticalAlignment="Top" 
-				 Width="200" GotMouseCapture="Lb_GotMouseCapture" />
+				 Width="200" 
+				 GotMouseCapture="Lb_GotMouseCapture" />
 		<!--<ListBox.ItemTemplate>
 				<DataTemplate>
 					помещаем отображаемые элементы в датаконтекст грида
@@ -118,11 +119,11 @@
 			</Separator.RenderTransform>
 		</Separator>
 		<Button x:Name="refreshBtn" 
-				Content="Обновить списки" 
+				Content="Редактировать профиль" 
 				HorizontalAlignment="Left" 
 				Margin="650,132,0,0" 
 				VerticalAlignment="Top" 
-				Width="130" 
+				Width="140" 
 				Click="RefreshBtn_Click"/>
 	</Grid>
 </Window>

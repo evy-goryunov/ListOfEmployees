@@ -10,13 +10,14 @@ namespace ListOfEmployees
 {
 	class Employee
 	{
-		public string _firstName { get; private set; }
-		public string _secondName { get; private set; }
-		public string _age { get; private set; }
-		public string _salary { get; private set; }
-		public string _department { get; private set; }
+		public string _firstName { get; private set; } //Имя
+		public string _secondName { get; private set; }//Фамилия
+		public int _age { get; private set; }          //Возраст
+		public int _salary { get; private set; }       //Зарплата
+		public string _department { get; private set; }//Отдел
+		public int _id { get; private set; }           //ID
 
-		public Employee(string firstName, string secondName, string age, string salary, string department)
+		public Employee(string firstName, string secondName, int age, int salary, string department)
 		{
 			this._firstName = firstName;
 			this._secondName = secondName;
@@ -24,17 +25,19 @@ namespace ListOfEmployees
 			this._salary = salary;
 			this._department = department;
 		}
-		//переопределим для корректного отображения данных в box
+		//переопределим для корректного отображения данных в listbox
 		public override string ToString()
 		{
-			return "Имя: " +_firstName + "\n" + "Фамилия: " + _secondName + "\n" +
-				   "Возраст: " + _age + "\n" + "Зарплата: " + _salary + "\n" + "Отдел :" + _department;
+			return "Имя: " + _firstName + "\n" + "Фамилия: " + _secondName + "\n" +
+				   "Возраст: " + _age + "\n" + "Зарплата: " + _salary + "\n" + "Отдел: " + _department
+				   + "\n" + "ID: " + _id;
 		}
-
-		public void SetAge(string age)
-		{
-			this._age = age;
-		}
+		//редактируем зарплату
+		public void SetSalary(int salary) => _salary = salary;
+		//редактируем отдел
+		public void SetDepartment(string department) => _department = department;
+		//добовляем ID
+		public void SetId(int id) => _id = id;
 
 	}
 }
